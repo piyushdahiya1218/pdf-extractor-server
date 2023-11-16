@@ -5,7 +5,9 @@ const url = require("url");
 const fs = require("fs");
 const root = require("rootrequire");
 const { PdfDocument } = require("@ironsoftware/ironpdf");
+const { FOLDER_NAME } = require("../utils/constants");
 
+//add selected pages to hash set, then add page numbers which are not in the hash set into array
 function convertJsonToArray(totalPages, checkboxStates){
   const pagesToBeRemoved = [];
   const checkboxStatesSet = new Set([]);
@@ -22,10 +24,11 @@ function convertJsonToArray(totalPages, checkboxStates){
   return pagesToBeRemoved;
 }
 
+//remove pages that are in the array, we'll be left with a file that contains only pages that were selected, then save that file and return its path
 const transformPDF = async (originalFilePath, fileName, pagesToBeRemoved) => {
   const originalFile = await PdfDocument.fromFile(originalFilePath);
   originalFile.removePage(pagesToBeRemoved);
-  const modifiedFolderPath = path.join(root, "public", "modified-files");
+  const modifiedFolderPath = path.join(root, FOLDER_NAME.MODIFIED_FILES);
   if (!fs.existsSync(modifiedFolderPath)) {
     fs.mkdirSync(modifiedFolderPath);
   }
@@ -34,8 +37,9 @@ const transformPDF = async (originalFilePath, fileName, pagesToBeRemoved) => {
   return modifiedFilePath;
 };
 
+//responds with the path of transformed file
 router.post("/", function (req, res) {
-  const originalFolderPath = path.join(root, "public", "original-files");
+  const originalFolderPath = path.join(root, FOLDER_NAME.ORIGINAL_FILES);
   const originalFilePath = originalFolderPath.concat("/", req.body.fileName);
   const pagesToBeRemoved = convertJsonToArray(req.body.totalPages, req.body.checkboxStates)
   transformPDF(originalFilePath, req.body.fileName, pagesToBeRemoved)

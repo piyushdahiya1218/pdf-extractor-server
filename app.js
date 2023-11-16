@@ -3,14 +3,12 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-
 var cors = require("cors")
-
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
 var uploadPDF = require("./routes/uploadPDF");
 var transformPDF = require("./routes/transformPDF")
-var downloadNewPDF = require("./routes/downloadNewPDF")
+var downloadNewPDF = require("./routes/downloadNewPDF");
+const { API_URL } = require("./utils/constants");
 
 var app = express();
 
@@ -26,11 +24,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+//Routes
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/uploadpdf", uploadPDF);
-app.use("/transformpdf", transformPDF);
-app.use("/downloadnewpdf", downloadNewPDF)
+app.use(API_URL.UPLOAD_PDF, uploadPDF);
+app.use(API_URL.TRANSFORM_PDF, transformPDF);
+app.use(API_URL.DOWNLOAD_NEW_PDF, downloadNewPDF)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
