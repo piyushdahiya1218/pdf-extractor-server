@@ -8,9 +8,9 @@ var cors = require("cors")
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-var getNewPDF = require("./routes/getNewPDF");
+var uploadPDF = require("./routes/uploadPDF");
+var transformPDF = require("./routes/transformPDF")
 var downloadNewPDF = require("./routes/downloadNewPDF")
-var pleaseDownloadNewPDF = require("./routes/pleaseDownloadNewPDF")
 
 var app = express();
 
@@ -28,9 +28,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/getnewpdf", getNewPDF);
-app.use("/downloadnewpdf", downloadNewPDF);
-app.use("/pleasedownloadnewpdf", pleaseDownloadNewPDF)
+app.use("/uploadpdf", uploadPDF);
+app.use("/transformpdf", transformPDF);
+app.use("/downloadnewpdf", downloadNewPDF)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
