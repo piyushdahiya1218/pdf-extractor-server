@@ -15,4 +15,4 @@ Steps to setup the backend -
 
 Please keep the terminal open in VS Code after starting the server to view download and extraction progress of **IronPDF Engine**.
 
-#### NOTE: If the Iron PDF Engine gives an error similar to `Error: Cannot connect to IronPdfEngine: Error14 UNAVAILABLE: No connection established. Last error: connect ECONNREFUSED`, then please try running the project on Windows machine or MacOS with intel chip. This error is caused by node server on Macs with new M1/M2 chips and not the project itself.
+#### NOTE: If the Iron PDF Engine gives an error similar to `Error: Cannot connect to IronPdfEngine: Error14 UNAVAILABLE: No connection established. Last error: connect ECONNREFUSED`, then please try running the project on Windows machine or MacOS with intel chip. This error is caused by node server and not the project itself.
