@@ -10,7 +10,7 @@ Steps to setup the backend -
 1. Clone the repository using command `git clone https://github.com/piyushdahiya1218/pdf-extractor-server.git`
 2. Open the project in VS Code.
 3. Open terminal (make sure to `cd` into the project) and run command `npm install`.
-4. After node_modules are installed, run `npm start` to start the server on localhost port **5000**. If you already have something else running on this port then either kill that process or change the port by going into the file *www* inside *bin* folder and change the port number.
-5. After server is started successfully, open this address `localhost:5000` (change port number if running on some other port) to make sure the server is running.
+4. After node_modules are installed, run `npm start` to start the server on localhost port **5000** by default. If you already have something else running on this port then either kill that process or change the port by going into the file *www* inside *bin* folder and change the port number.
+5. After server is started successfully, open this address `localhost:5000` in browser (change port number if running on some other port) to make sure the server is running.
 
 Please keep the terminal open in VS Code after starting the server to view download and extraction progress of **IronPDF Engine**.
