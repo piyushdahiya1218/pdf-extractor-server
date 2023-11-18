@@ -14,3 +14,5 @@ Steps to setup the backend -
 5. After server is started successfully, open this address `localhost:5000` in browser (change port number if running on some other port) to make sure the server is running.
 
 Please keep the terminal open in VS Code after starting the server to view download and extraction progress of **IronPDF Engine**.
+
+#### NOTE: If the **Iron PDF Engine** gives any error, try running the project on Windows machine or MacOS with intel chip. 
